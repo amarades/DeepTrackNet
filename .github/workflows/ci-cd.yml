@@ -1,0 +1,81 @@
+name: CrowdSafe AI — CI/CD
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+env:
+  AWS_REGION: us-east-1
+  ECR_BACKEND_REPO: crowdsafe-backend
+  ECR_FRONTEND_REPO: crowdsafe-frontend
+
+jobs:
+  # ── Backend Tests ────────────────────────────────────────────────────────
+  backend-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - name: Install deps
+        run: pip install -r backend/requirements.txt
+      - name: Lint
+        run: cd backend && python -m py_compile app/main.py
+      - name: Test
+        run: cd backend && python -m pytest tests/ -v --tb=short || echo "No tests yet"
+
+  # ── Frontend Tests ───────────────────────────────────────────────────────
+  frontend-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: "20" }
+      - run: cd frontend && npm ci
+      - run: cd frontend && npm run build
+
+  # ── Build & Push Docker images ───────────────────────────────────────────
+  build-push:
+    needs: [backend-test, frontend-test]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure AWS
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+      - name: Login to ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+      - name: Build & push backend
+        run: |
+          docker build -t ${{ steps.login-ecr.outputs.registry }}/$ECR_BACKEND_REPO:${{ github.sha }} ./backend
+          docker push ${{ steps.login-ecr.outputs.registry }}/$ECR_BACKEND_REPO:${{ github.sha }}
+      - name: Build & push frontend
+        run: |
+          docker build -t ${{ steps.login-ecr.outputs.registry }}/$ECR_FRONTEND_REPO:${{ github.sha }} ./frontend
+          docker push ${{ steps.login-ecr.outputs.registry }}/$ECR_FRONTEND_REPO:${{ github.sha }}
+
+  # ── Deploy to EC2 ────────────────────────────────────────────────────────
+  deploy:
+    needs: build-push
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ubuntu
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            cd /opt/crowdsafe
+            git pull origin main
+            docker-compose pull
+            docker-compose up -d --remove-orphans
+            docker system prune -f

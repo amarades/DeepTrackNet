@@ -1,0 +1,42 @@
+# ── Python ─────────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+.venv/
+venv/
+env/
+.env
+
+# ── Node ───────────────────────────────────────────────────────────────────────
+node_modules/
+frontend/dist/
+frontend/.vite/
+
+# ── AI Models (too large for git) ─────────────────────────────────────────────
+backend/models/*.pt
+backend/models/*.h5
+backend/models/*.pkl
+backend/models/*.bin
+
+# ── Screenshots & media ────────────────────────────────────────────────────────
+backend/static/screenshots/
+*.webp
+
+# ── DB / secrets ──────────────────────────────────────────────────────────────
+backend/.env
+*.db
+*.sqlite
+
+# ── IDE ────────────────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.DS_Store
+
+# ── Logs ──────────────────────────────────────────────────────────────────────
+*.log
+logs/
