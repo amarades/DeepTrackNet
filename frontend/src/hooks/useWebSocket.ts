@@ -1,5 +1,5 @@
 /**
- * WebSocket hook — connects to CrowdSafe AI live stream
+ * WebSocket hook — connects to DeepTrackNet live stream
  * Handles auto-reconnect, frame data updates, and connection state
  */
 import { useEffect, useRef, useCallback } from 'react'

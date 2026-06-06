@@ -1,5 +1,5 @@
 """
-FastAPI main application — CrowdSafe AI Platform
+FastAPI main application — DeepTrackNet Platform
 """
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
@@ -29,13 +29,13 @@ async def lifespan(app: FastAPI):
 
     yield
 
-    print("👋 Shutting down CrowdSafe AI...")
+    print("👋 Shutting down DeepTrackNet...")
 
 
 app = FastAPI(
     title=settings.APP_NAME,
     description="""
-## CrowdSafe AI — Crowd Monitoring & Predictive Safety Analytics Platform
+## DeepTrackNet — Crowd Monitoring & Predictive Safety Analytics Platform
 
 Real-time AI-powered crowd detection, tracking, density estimation, anomaly detection,
 and predictive safety analytics for smart cities, stadiums, airports, and public events.

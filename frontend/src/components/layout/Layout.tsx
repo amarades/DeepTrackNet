@@ -44,7 +44,7 @@ export default function Layout() {
           </div>
           {!sidebarCollapsed && (
             <div>
-              <p className="text-sm font-bold text-white leading-tight">CrowdSafe AI</p>
+              <p className="text-sm font-bold text-white leading-tight">DeepTrackNet</p>
               <p className="text-[10px] text-slate-500">Safety Analytics</p>
             </div>
           )}

@@ -11,33 +11,33 @@ router = APIRouter()
 
 # ── In-memory user store (replace with DB in production) ──────────────────────
 _DEMO_USERS = {
-    "admin@crowdsafe.ai": {
+    "admin@deeptracknet.ai": {
         "id": 1,
-        "email": "admin@crowdsafe.ai",
+        "email": "admin@deeptracknet.ai",
         "full_name": "System Administrator",
         "role": "admin",
         "is_active": True,
         "password_hash": get_password_hash("Admin@123"),
     },
-    "security@crowdsafe.ai": {
+    "security@deeptracknet.ai": {
         "id": 2,
-        "email": "security@crowdsafe.ai",
+        "email": "security@deeptracknet.ai",
         "full_name": "Security Officer",
         "role": "security_officer",
         "is_active": True,
         "password_hash": get_password_hash("Security@123"),
     },
-    "manager@crowdsafe.ai": {
+    "manager@deeptracknet.ai": {
         "id": 3,
-        "email": "manager@crowdsafe.ai",
+        "email": "manager@deeptracknet.ai",
         "full_name": "Event Manager",
         "role": "event_manager",
         "is_active": True,
         "password_hash": get_password_hash("Manager@123"),
     },
-    "viewer@crowdsafe.ai": {
+    "viewer@deeptracknet.ai": {
         "id": 4,
-        "email": "viewer@crowdsafe.ai",
+        "email": "viewer@deeptracknet.ai",
         "full_name": "Viewer Account",
         "role": "viewer",
         "is_active": True,
@@ -103,7 +103,7 @@ async def refresh_token(body: RefreshRequest):
 async def get_me(token: str = None):
     """Get current user profile (requires Authorization header)."""
     return {"message": "Attach Bearer token to Authorization header", "demo_accounts": [
-        {"email": "admin@crowdsafe.ai", "password": "Admin@123", "role": "admin"},
-        {"email": "security@crowdsafe.ai", "password": "Security@123", "role": "security_officer"},
-        {"email": "viewer@crowdsafe.ai", "password": "Viewer@123", "role": "viewer"},
+        {"email": "admin@deeptracknet.ai", "password": "Admin@123", "role": "admin"},
+        {"email": "security@deeptracknet.ai", "password": "Security@123", "role": "security_officer"},
+        {"email": "viewer@deeptracknet.ai", "password": "Viewer@123", "role": "viewer"},
     ]}

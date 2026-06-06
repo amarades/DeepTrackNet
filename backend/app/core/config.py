@@ -6,7 +6,7 @@ import secrets
 
 class Settings(BaseSettings):
     # ── App ───────────────────────────────────────────────────────────────────
-    APP_NAME: str = "CrowdSafe AI"
+    APP_NAME: str = "DeepTrackNet"
     APP_VERSION: str = "1.0.0"
     DEBUG: bool = False
     SIMULATION_MODE: bool = True  # Use mock data instead of real CV inference
@@ -18,8 +18,8 @@ class Settings(BaseSettings):
     REFRESH_TOKEN_EXPIRE_DAYS: int = 7
 
     # ── Database ──────────────────────────────────────────────────────────────
-    DATABASE_URL: str = "postgresql+asyncpg://crowd:crowdpass@localhost:5432/crowdsafe"
-    DATABASE_URL_SYNC: str = "postgresql://crowd:crowdpass@localhost:5432/crowdsafe"
+    DATABASE_URL: str = "postgresql+asyncpg://crowd:crowdpass@localhost:5432/deeptracknet"
+    DATABASE_URL_SYNC: str = "postgresql://crowd:crowdpass@localhost:5432/deeptracknet"
 
     # ── Redis ─────────────────────────────────────────────────────────────────
     REDIS_URL: str = "redis://localhost:6379/0"

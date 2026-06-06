@@ -30,7 +30,7 @@ from app.services.simulation.mock_data_generator import (
 from app.core.security import verify_password, get_password_hash, create_access_token, create_refresh_token
 
 app = FastAPI(
-    title="CrowdSafe AI",
+    title="DeepTrackNet",
     description="Crowd Monitoring & Predictive Safety Analytics Platform",
     version="1.0.0",
     docs_url="/docs",
@@ -50,17 +50,17 @@ _alerts_cache: List = []
 
 # ── Auth ───────────────────────────────────────────────────────────────────────
 DEMO_USERS = {
-    "admin@crowdsafe.ai":    {"full_name": "System Administrator", "role": "admin",            "pw": "Admin@123"},
-    "security@crowdsafe.ai": {"full_name": "Security Officer",     "role": "security_officer", "pw": "Security@123"},
-    "manager@crowdsafe.ai":  {"full_name": "Event Manager",        "role": "event_manager",    "pw": "Manager@123"},
-    "viewer@crowdsafe.ai":   {"full_name": "Viewer Account",       "role": "viewer",           "pw": "Viewer@123"},
+    "admin@deeptracknet.ai":    {"full_name": "System Administrator", "role": "admin",            "pw": "Admin@123"},
+    "security@deeptracknet.ai": {"full_name": "Security Officer",     "role": "security_officer", "pw": "Security@123"},
+    "manager@deeptracknet.ai":  {"full_name": "Event Manager",        "role": "event_manager",    "pw": "Manager@123"},
+    "viewer@deeptracknet.ai":   {"full_name": "Viewer Account",       "role": "viewer",           "pw": "Viewer@123"},
 }
 _hashed = {email: {**u, "hash": get_password_hash(u["pw"])} for email, u in DEMO_USERS.items()}
 
 
 @app.get("/")
 def root():
-    return {"service": "CrowdSafe AI", "version": "1.0.0", "simulation_mode": True, "docs": "/docs"}
+    return {"service": "DeepTrackNet", "version": "1.0.0", "simulation_mode": True, "docs": "/docs"}
 
 @app.get("/health")
 def health():

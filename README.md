@@ -1,4 +1,4 @@
-# CrowdSafe AI — Crowd Monitoring & Predictive Safety Analytics Platform
+# DeepTrackNet — Crowd Monitoring & Predictive Safety Analytics Platform
 
 > AI-powered real-time crowd monitoring system using YOLOv8, DeepSORT, FastAPI, and React.
 
@@ -62,10 +62,10 @@ Open: http://localhost (nginx) · http://localhost:8000/docs
 
 | Email | Password | Role |
 |-------|----------|------|
-| admin@crowdsafe.ai | Admin@123 | Admin |
-| security@crowdsafe.ai | Security@123 | Security Officer |
-| manager@crowdsafe.ai | Manager@123 | Event Manager |
-| viewer@crowdsafe.ai | Viewer@123 | Viewer |
+| admin@deeptracknet.ai | Admin@123 | Admin |
+| security@deeptracknet.ai | Security@123 | Security Officer |
+| manager@deeptracknet.ai | Manager@123 | Event Manager |
+| viewer@deeptracknet.ai | Viewer@123 | Viewer |
 
 ---
 
@@ -111,7 +111,7 @@ Full Swagger docs: http://localhost:8000/docs
 
 ```env
 SIMULATION_MODE=true
-DATABASE_URL=postgresql+asyncpg://crowd:crowdpass@localhost:5432/crowdsafe
+DATABASE_URL=postgresql+asyncpg://crowd:crowdpass@localhost:5432/deeptracknet
 REDIS_URL=redis://localhost:6379/0
 SECRET_KEY=your-secret-key
 TELEGRAM_BOT_TOKEN=optional
@@ -123,7 +123,7 @@ TWILIO_ACCOUNT_SID=optional
 ## Project Structure
 
 ```
-crowd-monitoring-platform/
+deeptracknet/
 ├── backend/                 # FastAPI + AI services
 │   ├── app/
 │   │   ├── api/routes/      # REST + WebSocket endpoints

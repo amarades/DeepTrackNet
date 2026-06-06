@@ -7,13 +7,13 @@ services:
     environment:
       POSTGRES_USER: crowd
       POSTGRES_PASSWORD: crowdpass
-      POSTGRES_DB: crowdsafe
+      POSTGRES_DB: deeptracknet
     volumes:
       - pgdata:/var/lib/postgresql/data
     ports:
       - "5432:5432"
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U crowd -d crowdsafe"]
+      test: ["CMD-SHELL", "pg_isready -U crowd -d deeptracknet"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -36,8 +36,8 @@ services:
     ports:
       - "8000:8000"
     environment:
-      DATABASE_URL: postgresql+asyncpg://crowd:crowdpass@postgres:5432/crowdsafe
-      DATABASE_URL_SYNC: postgresql://crowd:crowdpass@postgres:5432/crowdsafe
+      DATABASE_URL: postgresql+asyncpg://crowd:crowdpass@postgres:5432/deeptracknet
+      DATABASE_URL_SYNC: postgresql://crowd:crowdpass@postgres:5432/deeptracknet
       REDIS_URL: redis://redis:6379/0
       SIMULATION_MODE: "true"
       DEBUG: "false"

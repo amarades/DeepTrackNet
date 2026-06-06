@@ -8,13 +8,13 @@ import { authApi } from '@/api/client'
 import toast from 'react-hot-toast'
 
 const DEMO = [
-  { role: 'Admin', email: 'admin@crowdsafe.ai', password: 'Admin@123' },
-  { role: 'Security', email: 'security@crowdsafe.ai', password: 'Security@123' },
-  { role: 'Manager', email: 'manager@crowdsafe.ai', password: 'Manager@123' },
+  { role: 'Admin', email: 'admin@deeptracknet.ai', password: 'Admin@123' },
+  { role: 'Security', email: 'security@deeptracknet.ai', password: 'Security@123' },
+  { role: 'Manager', email: 'manager@deeptracknet.ai', password: 'Manager@123' },
 ]
 
 export default function Login() {
-  const [email, setEmail] = useState('admin@crowdsafe.ai')
+  const [email, setEmail] = useState('admin@deeptracknet.ai')
   const [password, setPassword] = useState('Admin@123')
   const [showPw, setShowPw] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -49,7 +49,7 @@ export default function Login() {
           <div className="w-14 h-14 bg-brand-600/20 border border-brand-500/30 rounded-2xl flex items-center justify-center mx-auto mb-4 glow-ring">
             <Shield size={26} className="text-brand-300" />
           </div>
-          <h1 className="text-2xl font-bold text-white">CrowdSafe AI</h1>
+          <h1 className="text-2xl font-bold text-white">DeepTrackNet</h1>
           <p className="text-slate-500 text-sm mt-1">Crowd Monitoring & Safety Analytics</p>
         </div>
 

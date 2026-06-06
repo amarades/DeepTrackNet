@@ -137,10 +137,10 @@ export default function Settings() {
       <Section title="Demo Accounts" icon={Shield}>
         <div className="space-y-2">
           {[
-            { email: 'admin@crowdsafe.ai', password: 'Admin@123', role: 'Admin' },
-            { email: 'security@crowdsafe.ai', password: 'Security@123', role: 'Security Officer' },
-            { email: 'manager@crowdsafe.ai', password: 'Manager@123', role: 'Event Manager' },
-            { email: 'viewer@crowdsafe.ai', password: 'Viewer@123', role: 'Viewer' },
+            { email: 'admin@deeptracknet.ai', password: 'Admin@123', role: 'Admin' },
+            { email: 'security@deeptracknet.ai', password: 'Security@123', role: 'Security Officer' },
+            { email: 'manager@deeptracknet.ai', password: 'Manager@123', role: 'Event Manager' },
+            { email: 'viewer@deeptracknet.ai', password: 'Viewer@123', role: 'Viewer' },
           ].map(acc => (
             <div key={acc.email} className="flex items-center gap-3 p-3 rounded-xl bg-surface-700/40 text-xs">
               <div className="flex-1">

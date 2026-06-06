@@ -1,8 +1,8 @@
 {
-  "name": "crowdsafe-dashboard",
+  "name": "deeptracknet-dashboard",
   "private": true,
   "version": "1.0.0",
-  "description": "CrowdSafe AI — Crowd Monitoring & Predictive Safety Analytics Dashboard",
+  "description": "DeepTrackNet — Crowd Monitoring & Predictive Safety Analytics Dashboard",
   "type": "module",
   "scripts": {
     "dev": "vite",

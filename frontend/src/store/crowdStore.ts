@@ -1,5 +1,5 @@
 /**
- * Zustand store — global application state for CrowdSafe AI
+ * Zustand store — global application state for DeepTrackNet
  */
 import { create } from 'zustand'
 
